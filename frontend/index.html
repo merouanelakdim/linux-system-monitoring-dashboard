@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Raspberry Pi System Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #202124;
+            color: #ffffff;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #00eaff;
+        }
+        .chart-container {
+            width: 600px;
+            margin: 20px auto;
+            background: #2c2f33;
+            padding: 20px;
+            border-radius: 10px;
+        }
+	.row {
+   		 display: grid;
+   		 grid-template-columns: 1fr 1fr;
+   		 gap: 20px;
+   	 margin-bottom: 20px;
+	}
+
+	.chart-container {
+    		background: #2c2f33;
+    		padding: 20px;
+    		border-radius: 10px;
+	}
+	
+	@media (max-width: 900px) {
+    		.row {
+        		grid-template-columns: 1fr;
+    		}
+	}
+
+
+    </style>
+</head>
+<body>
+
+<h1>Raspberry Pi System Dashboard</h1>
+<div class="row">
+	<div class="chart-container">
+	    <h2>CPU Usage (%)</h2>
+	    <canvas id="cpuChart"></canvas>
+	</div>
+	<div class="chart-container">
+	        <h2>CPU Usage per Core (%)</h2>
+       	 	<canvas id="cpuCoresChart"></canvas>
+   	 </div>
+</div>
+
+<div class="row">   
+
+	<div class="chart-container">
+	    <h2>RAM Usage (%)</h2>
+	    <canvas id="ramChart"></canvas>
+	</div>
+
+	<div class="chart-container">
+	    <h2>Temperature (C)</h2>
+	    <canvas id="tempChart"></canvas>
+	</div>
+</div>
+
+<div class="row">
+    <div class="chart-container">
+        <h2>Network Throughput (KB/s)</h2>
+        <canvas id="networkChart"></canvas>
+    </div>
+</div>
+
+
+<!-- Chart.js (LOCAL FILE) -->
+<script src="chart.js"></script>
+
+<!-- Dashboard logic -->
+<script src="dashboard.js"></script>
+
+<div class="row">
+	<div class="chart-container">
+	    <h2>CPU Frequency (MHz)</h2>
+	    <p>Current: <span id="freqCurrent">--</span></p>
+	    <p>Min: <span id="freqMin">--</span></p>
+	    <p>Max: <span id="freqMax">--</span></p>
+	</div>
+
+	<div class="chart-container">
+	    <h2>System Uptime</h2>
+	    <p id="uptime">--</p>
+	</div>
+</div>
+</body>
+</html>
+
